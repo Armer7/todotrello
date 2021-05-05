@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@todotrello/data": ["libs/data/src/index.ts"],
-      "@todotrello/data-access-api": ["libs/data-access-api/src/index.ts"]
+      "@todotrello/data-access-api": ["libs/data-access-api/src/index.ts"],
+      "@todotrello/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

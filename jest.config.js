@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/apps/api',
     '<rootDir>/libs/data',
     '<rootDir>/libs/data-access-api',
+    '<rootDir>/libs/ui',
   ],
 };

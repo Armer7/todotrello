@@ -1,9 +1,12 @@
 import axios from 'axios';
-import * as process from 'process';
+
 export const getAllCard = async () => {
-  const response = await axios.get(`${process.env.REACT_APP_API_SERVER}/`)
-  if (!response) {
+  const response = await axios.get(`/api`)
+  const data = await response.data
+  if (response.status !== 200) {
     throw  new Error('Something went wrong');
   }
-  return response;
+  return data;
 }
+
+

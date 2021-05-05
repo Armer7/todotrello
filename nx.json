@@ -21,6 +21,7 @@
     "dashboard-e2e": { "tags": [], "implicitDependencies": ["dashboard"] },
     "api": { "tags": [] },
     "data": { "tags": [] },
-    "data-access-api": { "tags": [] }
+    "data-access-api": { "tags": [] },
+    "ui": { "tags": [] }
   }
 }
