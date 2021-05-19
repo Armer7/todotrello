@@ -1,32 +1,50 @@
 export interface CardBodyDataConfig {
   startTime?: Date;
   endTime?: Date;
-  users?: Array<userConfig>;
+  users?: Pick<AccessUser, 'id'>[];
 }
 
-interface userConfig {
-  user: string
-}
+export type UserConfig = Exclude<AccessUser, 'password'>;
 
-export interface AccessUser extends userConfig{
-  id: string
-  password: string
-}
-
-interface LabelConfig {
-  label: string
-}
-
-export interface CardDataConfig extends userConfig{
+export interface AccessUser {
   id: string;
-  title: string;
+  user: string;
+  password: string;
+}
+
+export interface LabelConfig {
+  id: string;
+  label: string;
+  color: string;
+}
+
+export interface CardDataConfig {
+  id: string;
+  titleCard: string;
   description?: string;
-  labels?: Array<LabelConfig>;
-  labelSection: string;
+  userId: Pick<AccessUser, 'id'>;
+  labelsId?: Pick<LabelConfig, 'id'>[];
+  sectionId: Pick<Sections, 'id'>;
   checkDone: boolean;
   cardBody?: CardBodyDataConfig;
 }
 
 export interface Sections {
+  id: string;
   title: string;
+}
+
+export const showDate = { year: 'numeric', month: 'short', day: 'numeric' };
+
+type TCardProps = {
+  users: UserConfig[];
+  labels: LabelConfig[];
+};
+
+export interface CardProps extends TCardProps {
+  card: CardDataConfig;
+}
+
+export interface CardColProps extends TCardProps {
+  section: Sections;
 }

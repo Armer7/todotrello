@@ -1,99 +1,140 @@
-import {CardDataConfig, Sections, AccessUser} from "@todotrello/data";
+import {
+  CardDataConfig,
+  Sections,
+  AccessUser,
+  LabelConfig,
+} from '@todotrello/data';
 
 export const sections: Sections[] = [
   {
-    title: 'New'
+    id: '1',
+    title: 'New',
   },
-    {
-    title: 'InProcess'
+  {
+    id: '2',
+    title: 'InProcess',
   },
-    {
-    title: 'ReView'
+  {
+    id: '3',
+    title: 'ReView',
   },
-    {
-    title: 'Close'
+  {
+    id: '4',
+    title: 'Close',
   },
+];
 
+export const labels: LabelConfig[] = [
+  {
+    id: '1',
+    label: 'export',
+    color: 'yellow',
+  },
+  {
+    id: '2',
+    label: 'test',
+    color: 'red',
+  },
+  {
+    id: '3',
+    label: 'local',
+    color: 'green',
+  },
 ];
 
 export const accessUser: AccessUser[] = [
   {
     id: '1',
-  user: '@Aleksey',
-  password: '123'
+    user: 'Aleksey',
+    password: '123',
   },
-   {
+  {
     id: '2',
-  user: '@Elen',
-  password: '456'
+    user: 'Elen',
+    password: '456',
   },
-
 ];
-
 
 export const cardData: CardDataConfig[] = [
   {
-  id: '1',
-    title: 'first card',
+    id: '1',
+    titleCard: 'first card',
     description: 'It is first card',
-    labelSection: 'New',
+    sectionId: {
+      id: '1',
+    },
     checkDone: false,
-    user: '@Aleksey'
+    userId: {
+      id: '1',
+    },
   },
   {
     id: '2',
-    title: 'second card',
+    titleCard: 'second card',
     description: 'It is second card',
-    labelSection: 'InProcess',
+    sectionId: {
+      id: '2',
+    },
     checkDone: false,
-    user: '@Aleksey',
+    userId: {
+      id: '1',
+    },
     cardBody: {
-      startTime: new Date(1618861032669),
-      users: [
-        {user: '@Aleksey'},
-        {user: '@Elen'}
-      ]
-    }
+      startTime: new Date(Date.UTC(2021, 4, 20, 3, 0, 0)),
+      users: [{ id: '1' }, { id: '2' }],
+    },
   },
   {
     id: '3',
-    title: 'third card',
+    titleCard: 'third card',
     description: 'It is third card',
-    labels: [
+    labelsId: [
       {
-        label: 'export'
-      }
+        id: '1',
+      },
+      {
+        id: '2',
+      },
+      {
+        id: '3',
+      },
     ],
-    labelSection: 'ReView',
+    sectionId: {
+      id: '3',
+    },
     checkDone: true,
-    user: '@Aleksey',
+    userId: {
+      id: '2',
+    },
     cardBody: {
-      startTime: new Date(1618861032669),
-      endTime: new Date( 1618861432000),
-      users: [
-        {user: '@Aleksey'},
-      ]
-    }
+      startTime: new Date(Date.UTC(2021, 4, 22, 3, 0, 0)),
+      endTime: new Date(Date.UTC(2021, 4, 25, 3, 0, 0)),
+      users: [{ id: '1' }],
+    },
   },
-    {
+  {
     id: '4',
-    title: 'fourth card',
+    titleCard: 'fourth card',
     description: 'It is fourth card',
-    labels: [
+    labelsId: [
       {
-        label: 'test'
-      }
+        id: '2',
+      },
+      {
+        id: '3',
+      },
     ],
-    labelSection: 'Close',
+    sectionId: {
+      id: '4',
+    },
     checkDone: true,
-    user: '@Elen',
+    userId: {
+      id: '2',
+    },
     cardBody: {
-      startTime: new Date(1618861032669),
-      endTime: new Date( 1618861432000),
-      users: [
-        {user: '@Aleksey'},
-      ]
-    }
+      startTime: new Date(Date.UTC(2021, 4, 26, 3, 0, 0)),
+      endTime: new Date(Date.UTC(2021, 4, 22, 15, 0, 0)),
+      users: [{ id: '1' }],
+    },
   },
-
 ];
