@@ -10,15 +10,30 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@todotrello/data": ["libs/data/src/index.ts"],
-      "@todotrello/data-access-api": ["libs/data-access-api/src/index.ts"],
-      "@todotrello/ui": ["libs/ui/src/index.ts"]
+      "@todotrello/data": [
+        "libs/data/src/index.ts"
+      ],
+      "@todotrello/data-access-api": [
+        "libs/data-access-api/src/index.ts"
+      ],
+      "@todotrello/ui": [
+        "libs/ui/src/index.ts"
+      ],
+      "@todotrello/feature": [
+        "libs/feature/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import EditCard from './edit-card';
+import Events from './events';
 
-describe('EditCard', () => {
+describe('Events', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(< EditCard />);
+    const { baseElement } = render(< Events />);
     expect(baseElement).toBeTruthy();
   });
 });

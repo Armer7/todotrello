@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import { CardCol } from './CardCol';
+import Feature from './feature';
 
-describe('CardCol', () => {
+describe('Feature', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<CardCol id="1" title="new" />);
+    const { baseElement } = render(< Feature />);
     expect(baseElement).toBeTruthy();
   });
 });
