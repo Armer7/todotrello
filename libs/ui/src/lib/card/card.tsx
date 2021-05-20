@@ -68,8 +68,8 @@ export const CardTodo: React.FC<CardProps> = ({ card, users, labels }) => {
           {card.titleCard}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          {card.cardBody?.startTime
-            ? new Date(card.cardBody.startTime).toLocaleDateString(
+          {card.checkDone.startTime
+            ? new Date(card.checkDone.startTime).toLocaleDateString(
                 'en-EN',
                 showDate
               )
@@ -81,7 +81,9 @@ export const CardTodo: React.FC<CardProps> = ({ card, users, labels }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">More...</Button>
+        <Link to={`/edit-card/${card.id}`}>
+          <Button size="small">More...</Button>
+        </Link>
       </CardActions>
     </Card>
   );
