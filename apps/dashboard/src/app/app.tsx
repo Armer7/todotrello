@@ -1,58 +1,17 @@
-import { getCategory, getLabels, getUser } from '@todotrello/data-access-api';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-//import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { useQuery } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
-import Loader from 'react-loader-spinner';
-import { Container } from '@material-ui/core';
-import { CardCol } from './card-col';
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  })
-);
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import TodosPage from './pages/TodosPage';
+import CreateCard from './pages/CreateCard';
+import EditCard from './pages/EditCard';
 
-export function App() {
-  const classes = useStyles();
-  const { data, error, isLoading, isError } = useQuery('category', getCategory);
-  const users = useQuery('users', getUser);
-  const labels = useQuery('labels', getLabels);
-  if (isLoading) {
-    return (
-      <Container maxWidth="xs">
-        <Grid container spacing={3} justify="center">
-          <Loader type="ThreeDots" color="#ccc" height={30} />
-        </Grid>
-      </Container>
-    );
-  }
-
-  if (isError) {
-    return <span>Error: {error}</span>;
-  }
+const App: React.FC = () => {
   return (
-    <div className={classes.root}>
-      <Grid container spacing={3}>
-        {data.map((item) => (
-          <CardCol
-            section={item}
-            key={item.id}
-            users={users.data}
-            labels={labels.data}
-          />
-        ))}
-      </Grid>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </div>
+    <Switch>
+      <Route exact path="/" component={TodosPage} />
+      <Route path="/create-card" component={CreateCard} />
+      <Route path="/edit-card/:id" component={EditCard} />
+    </Switch>
   );
-}
+};
 
 export default App;
