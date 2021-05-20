@@ -1,7 +1,14 @@
+interface IcheckDone {
+  startTime?: Date;
+  endTime?: Date;
+  check: boolean;
+}
+
 export interface CardBodyDataConfig {
   startTime?: Date;
   endTime?: Date;
-  users?: Pick<AccessUser, 'id'>[];
+  userId?: Pick<AccessUser, 'id'>;
+  description: string;
 }
 
 export type UserConfig = Exclude<AccessUser, 'password'>;
@@ -25,8 +32,8 @@ export interface CardDataConfig {
   userId: Pick<AccessUser, 'id'>;
   labelsId?: Pick<LabelConfig, 'id'>[];
   sectionId: Pick<Sections, 'id'>;
-  checkDone: boolean;
-  cardBody?: CardBodyDataConfig;
+  checkDone: IcheckDone;
+  cardBody?: CardBodyDataConfig[];
 }
 
 export interface Sections {
@@ -47,4 +54,5 @@ export interface CardProps extends TCardProps {
 
 export interface CardColProps extends TCardProps {
   section: Sections;
+  cards: CardDataConfig[];
 }
