@@ -63,7 +63,9 @@ export const cardData: CardDataConfig[] = [
     sectionId: {
       id: '1',
     },
-    checkDone: false,
+    checkDone: {
+      check: false,
+    },
     userId: {
       id: '1',
     },
@@ -75,14 +77,20 @@ export const cardData: CardDataConfig[] = [
     sectionId: {
       id: '2',
     },
-    checkDone: false,
+    checkDone: {
+      startTime: new Date(Date.UTC(2021, 4, 20, 3, 0, 0)),
+      check: false,
+    },
     userId: {
       id: '1',
     },
-    cardBody: {
-      startTime: new Date(Date.UTC(2021, 4, 20, 3, 0, 0)),
-      users: [{ id: '1' }, { id: '2' }],
-    },
+    cardBody: [
+      {
+        startTime: new Date(Date.UTC(2021, 4, 20, 3, 0, 0)),
+        userId: { id: '1' },
+        description: 'My part',
+      },
+    ],
   },
   {
     id: '3',
@@ -102,15 +110,22 @@ export const cardData: CardDataConfig[] = [
     sectionId: {
       id: '3',
     },
-    checkDone: true,
+    checkDone: {
+      startTime: new Date(Date.UTC(2021, 4, 22, 3, 0, 0)),
+      endTime: new Date(Date.UTC(2021, 4, 25, 3, 0, 0)),
+      check: true,
+    },
     userId: {
       id: '2',
     },
-    cardBody: {
-      startTime: new Date(Date.UTC(2021, 4, 22, 3, 0, 0)),
-      endTime: new Date(Date.UTC(2021, 4, 25, 3, 0, 0)),
-      users: [{ id: '1' }],
-    },
+    cardBody: [
+      {
+        startTime: new Date(Date.UTC(2021, 4, 22, 3, 0, 0)),
+        endTime: new Date(Date.UTC(2021, 4, 25, 3, 0, 0)),
+        userId: { id: '1' },
+        description: 'Setting',
+      },
+    ],
   },
   {
     id: '4',
@@ -127,14 +142,21 @@ export const cardData: CardDataConfig[] = [
     sectionId: {
       id: '4',
     },
-    checkDone: true,
+    checkDone: {
+      startTime: new Date(Date.UTC(2021, 4, 26, 3, 0, 0)),
+      endTime: new Date(Date.UTC(2021, 4, 22, 15, 0, 0)),
+      check: true,
+    },
     userId: {
       id: '2',
     },
-    cardBody: {
-      startTime: new Date(Date.UTC(2021, 4, 26, 3, 0, 0)),
-      endTime: new Date(Date.UTC(2021, 4, 22, 15, 0, 0)),
-      users: [{ id: '1' }],
-    },
+    cardBody: [
+      {
+        startTime: new Date(Date.UTC(2021, 4, 26, 3, 0, 0)),
+        endTime: new Date(Date.UTC(2021, 4, 22, 15, 0, 0)),
+        userId: { id: '1' },
+        description: 'set param',
+      },
+    ],
   },
 ];
