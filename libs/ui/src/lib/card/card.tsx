@@ -39,7 +39,12 @@ const useStyles = makeStyles({
   },
 });
 
-export const CardTodo: React.FC<CardProps> = ({ card, users, labels }) => {
+export const CardTodo: React.FC<CardProps> = ({
+  card,
+  users,
+  labels,
+  ...props
+}) => {
   const classes = useStyles();
 
   return (
