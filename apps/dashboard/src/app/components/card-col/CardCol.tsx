@@ -36,14 +36,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export const CardCol: React.FC<CardColProps> = ({
-  section,
-  users,
-  labels,
-  cards,
-}) => {
+export const CardCol: React.FC<CardColProps> = (props) => {
   const classes = useStyles();
-
+  const { section, users, labels, cards } = props;
   return (
     <Grid item xs={12} sm={6} md={4} lg={2}>
       <Paper className={classes.paper}>
