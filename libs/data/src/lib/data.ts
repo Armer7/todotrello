@@ -1,43 +1,45 @@
-interface IcheckDone {
+interface ICheckDone {
   startTime?: Date;
   endTime?: Date;
   check: boolean;
 }
 
-export interface CardBodyDataConfig {
+interface ICardCheckList {
+  readonly checkId: string;
   startTime?: Date;
   endTime?: Date;
   userId?: Pick<AccessUser, 'id'>;
+  checkList: boolean;
   description: string;
 }
 
 export type UserConfig = Exclude<AccessUser, 'password'>;
 
 export interface AccessUser {
-  id: string;
+  readonly id: string;
   user: string;
   password: string;
 }
 
 export interface LabelConfig {
-  id: string;
+  readonly id: string;
   label: string;
   color: string;
 }
 
 export interface CardDataConfig {
-  id: string;
+  readonly id: string;
   titleCard: string;
   description?: string;
   userId: Pick<AccessUser, 'id'>;
   labelsId?: Pick<LabelConfig, 'id'>[];
   sectionId: Pick<Sections, 'id'>;
-  checkDone: IcheckDone;
-  cardBody?: CardBodyDataConfig[];
+  checkDone: ICheckDone;
+  cardCheckList?: ICardCheckList[];
 }
 
 export interface Sections {
-  id: string;
+  readonly id: string;
   title: string;
 }
 

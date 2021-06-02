@@ -84,10 +84,12 @@ export const cardData: CardDataConfig[] = [
     userId: {
       id: '1',
     },
-    cardBody: [
+    cardCheckList: [
       {
+        checkId: '1',
         startTime: new Date(Date.UTC(2021, 4, 20, 3, 0, 0)),
         userId: { id: '1' },
+        checkList: false,
         description: 'My part',
       },
     ],
@@ -118,11 +120,13 @@ export const cardData: CardDataConfig[] = [
     userId: {
       id: '2',
     },
-    cardBody: [
+    cardCheckList: [
       {
+        checkId: '1',
         startTime: new Date(Date.UTC(2021, 4, 22, 3, 0, 0)),
         endTime: new Date(Date.UTC(2021, 4, 25, 3, 0, 0)),
         userId: { id: '1' },
+        checkList: false,
         description: 'Setting',
       },
     ],
@@ -150,11 +154,13 @@ export const cardData: CardDataConfig[] = [
     userId: {
       id: '2',
     },
-    cardBody: [
+    cardCheckList: [
       {
+        checkId: '1',
         startTime: new Date(Date.UTC(2021, 4, 26, 3, 0, 0)),
         endTime: new Date(Date.UTC(2021, 4, 22, 15, 0, 0)),
         userId: { id: '1' },
+        checkList: true,
         description: 'set param',
       },
     ],
