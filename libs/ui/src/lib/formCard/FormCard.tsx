@@ -1,134 +1,163 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { lightGreen } from '@material-ui/core/colors';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControl,
+  Input,
+  TextField,
+  withStyles,
+} from '@material-ui/core';
+import SelectBox from '../select-box/SelectBox';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import ListLabels from '../list-labels/ListLabels';
+import TopTextOfBlock from '../top-text-of-block/TopTextOfBlock';
+import { DateTimePicker } from '@material-ui/pickers';
+import CheckBoxStateTask from '../check-box-state-task/CheckBoxStateTask';
+import CheckList from '../check-list/CheckList';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      maxWidth: '40%',
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
-    expand: {
-      transform: 'rotate(0deg)',
-      marginLeft: 'auto',
-      transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-      }),
-    },
-    expandOpen: {
-      transform: 'rotate(180deg)',
+      width: '768px',
+      padding: '10px',
     },
     avatar: {
-      backgroundColor: red[500],
+      backgroundColor: lightGreen[500],
+    },
+    datePicker: {
+      '& input': {
+        paddingTop: '9px',
+        paddingBottom: '9px',
+      },
+      '& .MuiInputLabel-outlined': {
+        transform: 'translate(14px, 11px) scale(1)',
+      },
+      '& .MuiInputLabel-outlined.MuiInputLabel-shrink': {
+        transform: 'translate(14px, -6px) scale(0.75)',
+      },
     },
   })
 );
 
+const CssTextField = withStyles({
+  root: {
+    margin: '3px 8px',
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        border: 'none',
+      },
+      '&:hover fieldset': {
+        border: '1px solid',
+        borderColor: 'yellow',
+      },
+      '&.Mui-focused fieldset': {
+        border: '1px solid',
+        borderColor: 'green',
+      },
+    },
+  },
+})(TextField);
+
 /* eslint-disable-next-line */
 export interface FormCardProps {}
 
-export const FormCard: React.FC = (props: FormCardProps) => {
-  const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+export const FormCard: React.FC<FormCardProps> = (props) => {
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            DO
           </Avatar>
         }
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon />
+            <HighlightOffIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title="Card ToDo"
+        subheader="Fill or edit of fields below"
       />
-      <CardMedia
-        className={classes.media}
-        image="/static/images/cards/paella.jpg"
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          This impressive paella is a perfect party dish and a fun meal to cook
-          together with your guests. Add 1 cup of frozen peas along with the
-          mussels, if you like.
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and
-            set aside for 10 minutes.
-          </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet
-            over medium-high heat. Add chicken, shrimp and chorizo, and cook,
-            stirring occasionally until lightly browned, 6 to 8 minutes.
-            Transfer shrimp to a large plate and set aside, leaving chicken and
-            chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes,
-            onion, salt and pepper, and cook, stirring often until thickened and
-            fragrant, about 10 minutes. Add saffron broth and remaining 4 1/2
-            cups chicken broth; bring to a boil.
-          </Typography>
-          <Typography paragraph>
-            Add rice and stir very gently to distribute. Top with artichokes and
-            peppers, and cook without stirring, until most of the liquid is
-            absorbed, 15 to 18 minutes. Reduce heat to medium-low, add reserved
-            shrimp and mussels, tucking them down into the rice, and cook again
-            without stirring, until mussels have opened and rice is just tender,
-            5 to 7 minutes more. (Discard any mussels that don’t open.)
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then
-            serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
+      <Box display="flex">
+        <CssTextField
+          id="titleCard"
+          label="Title"
+          multiline
+          fullWidth
+          variant="outlined"
+          size="small"
+        />
+      </Box>
+      <Box>
+        <SelectBox label="Section" />
+      </Box>
+
+      <Box display="flex" alignItems="end" flexWrap="wrap">
+        <SelectBox label="User" />
+        <TopTextOfBlock labelText="Labels">
+          <ListLabels />
+        </TopTextOfBlock>
+      </Box>
+      <Box display="flex" alignItems="center" m="10px">
+        <CheckBoxStateTask id="checkDone" />
+        <DateTimePicker
+          className={classes.datePicker}
+          autoOk
+          clearable
+          ampm={false}
+          label="Start"
+          inputVariant="outlined"
+          value={startDate}
+          onChange={setStartDate}
+        />
+        <DateTimePicker
+          className={classes.datePicker}
+          autoOk
+          clearable
+          ampm={false}
+          label="End"
+          inputVariant="outlined"
+          value={endDate}
+          onChange={setEndDate}
+        />
+      </Box>
+      <Box display="flex">
+        <CssTextField
+          id="description"
+          label="Description"
+          fullWidth
+          variant="outlined"
+          size="small"
+        />
+      </Box>
+      <TopTextOfBlock labelText="Check List">
+        <Box display="flex" flexDirection="column">
+          <CheckList />
+        </Box>
+      </TopTextOfBlock>
+      <Box m="10px">
+        <Button variant="contained">Add check</Button>
+      </Box>
     </Card>
   );
 };
